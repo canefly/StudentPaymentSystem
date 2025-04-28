@@ -1,0 +1,9 @@
+Hex Code | Description
+#102118 | Deep Forest Green-Black — very dark, almost black, muted green. Good for strong backgrounds or text.
+#F9E48E | Soft Gold Yellow — warm, pastel-like gold. Gives an inviting, energetic highlight.
+#ACC9B6 | Dusty Sage Green — muted, calm green, very soothing. Good for panels and sections.
+#CAD3CB | Cloudy Mint Gray — light misty gray-green, very subtle. Great for background contrast without being pure white.
+#F5F9F3 | Gentle Off-White — almost white, but with a hint of green/cream warmth. Softens harsh UI brightness.
+#CAD4CB | Muted Gray Sage — slightly darker version of #CAD3CB, keeps the greenish tone. Good for subtle borders or backgrounds.
+#30634A | Bold Jungle Green — strong rich green. Perfect for main headers, action buttons, or strong accents.
+#D0E5CC | Light Pastel Green — super soft green, very "fresh" vibe. Good for backgrounds, especially in student or eco-friendly themes.
