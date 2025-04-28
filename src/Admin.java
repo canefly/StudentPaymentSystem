@@ -28,26 +28,26 @@ public class Admin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        otherFees1 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
+        accountManagement = new javax.swing.JPanel();
+        headerAccmngmt = new javax.swing.JPanel();
+        AccountManagement = new javax.swing.JLabel();
+        email = new javax.swing.JTextField();
+        password = new javax.swing.JTextField();
+        confirmPassword = new javax.swing.JTextField();
+        roleSelection = new javax.swing.JComboBox<>();
+        Email = new javax.swing.JLabel();
+        Password = new javax.swing.JLabel();
+        Role = new javax.swing.JLabel();
+        ConfirmPassword = new javax.swing.JLabel();
+        create = new javax.swing.JButton();
+        accountsGrid = new javax.swing.JPanel();
+        headerAccounts = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        librariesMngt = new javax.swing.JPanel();
+        headerLibraries = new javax.swing.JPanel();
+        LibrariesMngt = new javax.swing.JLabel();
         otherFees = new javax.swing.JButton();
         Tuition = new javax.swing.JButton();
         Books = new javax.swing.JButton();
@@ -85,113 +85,113 @@ public class Admin extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1292, -1));
 
-        jPanel3.setBackground(new java.awt.Color(172, 201, 182));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(16, 33, 24)));
+        accountManagement.setBackground(new java.awt.Color(172, 201, 182));
+        accountManagement.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(16, 33, 24)));
 
-        jPanel6.setBackground(new java.awt.Color(48, 99, 74));
+        headerAccmngmt.setBackground(new java.awt.Color(48, 99, 74));
 
-        jLabel2.setBackground(new java.awt.Color(245, 249, 243));
-        jLabel2.setFont(new java.awt.Font("Helvetica", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(245, 249, 243));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Account Management");
+        AccountManagement.setBackground(new java.awt.Color(245, 249, 243));
+        AccountManagement.setFont(new java.awt.Font("Helvetica", 1, 24)); // NOI18N
+        AccountManagement.setForeground(new java.awt.Color(245, 249, 243));
+        AccountManagement.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AccountManagement.setText("Account Management");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout headerAccmngmtLayout = new javax.swing.GroupLayout(headerAccmngmt);
+        headerAccmngmt.setLayout(headerAccmngmtLayout);
+        headerAccmngmtLayout.setHorizontalGroup(
+            headerAccmngmtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerAccmngmtLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AccountManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        headerAccmngmtLayout.setVerticalGroup(
+            headerAccmngmtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerAccmngmtLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(AccountManagement, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Role", "Cashier", "Student" }));
+        roleSelection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Role", "Cashier", "Student" }));
 
-        jLabel5.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        jLabel5.setText("Email:");
+        Email.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        Email.setText("Email:");
 
-        jLabel6.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        jLabel6.setText("Password:");
+        Password.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        Password.setText("Password:");
 
-        jLabel7.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        jLabel7.setText("Role");
+        Role.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        Role.setText("Role");
 
-        jLabel8.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        jLabel8.setText("Confirm Password");
+        ConfirmPassword.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        ConfirmPassword.setText("Confirm Password");
 
-        otherFees1.setBackground(new java.awt.Color(245, 249, 243));
-        otherFees1.setFont(new java.awt.Font("Helvetica", 1, 24)); // NOI18N
-        otherFees1.setText("CREATE");
-        otherFees1.addActionListener(new java.awt.event.ActionListener() {
+        create.setBackground(new java.awt.Color(245, 249, 243));
+        create.setFont(new java.awt.Font("Helvetica", 1, 24)); // NOI18N
+        create.setText("CREATE");
+        create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                otherFees1ActionPerformed(evt);
+                createActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout accountManagementLayout = new javax.swing.GroupLayout(accountManagement);
+        accountManagement.setLayout(accountManagementLayout);
+        accountManagementLayout.setHorizontalGroup(
+            accountManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerAccmngmt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(accountManagementLayout.createSequentialGroup()
+                .addGroup(accountManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, accountManagementLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(accountManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Email)
+                            .addGroup(accountManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Password)
+                            .addComponent(Role)
+                            .addComponent(ConfirmPassword)))
+                    .addGroup(accountManagementLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(otherFees1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))))
+                        .addGroup(accountManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(roleSelection, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(create, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        accountManagementLayout.setVerticalGroup(
+            accountManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(accountManagementLayout.createSequentialGroup()
+                .addComponent(headerAccmngmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(jLabel5)
+                .addComponent(Email)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jLabel6)
+                .addComponent(Password)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(jLabel8)
+                .addComponent(ConfirmPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(confirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jLabel7)
+                .addComponent(Role)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(roleSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(otherFees1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(create, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 480, 610));
+        jPanel1.add(accountManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 480, 610));
 
-        jPanel4.setBackground(new java.awt.Color(172, 201, 182));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(16, 33, 24)));
+        accountsGrid.setBackground(new java.awt.Color(172, 201, 182));
+        accountsGrid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(16, 33, 24)));
 
-        jPanel7.setBackground(new java.awt.Color(48, 99, 74));
+        headerAccounts.setBackground(new java.awt.Color(48, 99, 74));
 
         jLabel3.setBackground(new java.awt.Color(245, 249, 243));
         jLabel3.setFont(new java.awt.Font("Helvetica", 1, 24)); // NOI18N
@@ -199,18 +199,18 @@ public class Admin extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Accounts");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout headerAccountsLayout = new javax.swing.GroupLayout(headerAccounts);
+        headerAccounts.setLayout(headerAccountsLayout);
+        headerAccountsLayout.setHorizontalGroup(
+            headerAccountsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerAccountsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        headerAccountsLayout.setVerticalGroup(
+            headerAccountsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerAccountsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
@@ -230,52 +230,52 @@ public class Admin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout accountsGridLayout = new javax.swing.GroupLayout(accountsGrid);
+        accountsGrid.setLayout(accountsGridLayout);
+        accountsGridLayout.setHorizontalGroup(
+            accountsGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerAccounts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(accountsGridLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        accountsGridLayout.setVerticalGroup(
+            accountsGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(accountsGridLayout.createSequentialGroup()
+                .addComponent(headerAccounts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 480, 610));
+        jPanel1.add(accountsGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 480, 610));
 
-        jPanel5.setBackground(new java.awt.Color(172, 201, 182));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(16, 33, 24)));
+        librariesMngt.setBackground(new java.awt.Color(172, 201, 182));
+        librariesMngt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(16, 33, 24)));
 
-        jPanel8.setBackground(new java.awt.Color(48, 99, 74));
+        headerLibraries.setBackground(new java.awt.Color(48, 99, 74));
 
-        jLabel4.setBackground(new java.awt.Color(245, 249, 243));
-        jLabel4.setFont(new java.awt.Font("Helvetica", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(245, 249, 243));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Libraries Mngt");
+        LibrariesMngt.setBackground(new java.awt.Color(245, 249, 243));
+        LibrariesMngt.setFont(new java.awt.Font("Helvetica", 1, 24)); // NOI18N
+        LibrariesMngt.setForeground(new java.awt.Color(245, 249, 243));
+        LibrariesMngt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LibrariesMngt.setText("Libraries Mngt");
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout headerLibrariesLayout = new javax.swing.GroupLayout(headerLibraries);
+        headerLibraries.setLayout(headerLibrariesLayout);
+        headerLibrariesLayout.setHorizontalGroup(
+            headerLibrariesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLibrariesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LibrariesMngt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        headerLibrariesLayout.setVerticalGroup(
+            headerLibrariesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLibrariesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(LibrariesMngt, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -315,25 +315,25 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout librariesMngtLayout = new javax.swing.GroupLayout(librariesMngt);
+        librariesMngt.setLayout(librariesMngtLayout);
+        librariesMngtLayout.setHorizontalGroup(
+            librariesMngtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(headerLibraries, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, librariesMngtLayout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(librariesMngtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(otherFees, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(librariesMngtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(Uniforms, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                         .addComponent(Books, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Tuition, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(19, 19, 19))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        librariesMngtLayout.setVerticalGroup(
+            librariesMngtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(librariesMngtLayout.createSequentialGroup()
+                .addComponent(headerLibraries, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(Tuition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
@@ -345,7 +345,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(0, 251, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 100, 280, 610));
+        jPanel1.add(librariesMngt, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 100, 280, 610));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -368,9 +368,9 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UniformsActionPerformed
 
-    private void otherFees1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherFees1ActionPerformed
+    private void createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_otherFees1ActionPerformed
+    }//GEN-LAST:event_createActionPerformed
 
     /**
      * @param args the command line arguments
@@ -408,32 +408,32 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AccountManagement;
     private javax.swing.JButton Books;
+    private javax.swing.JLabel ConfirmPassword;
+    private javax.swing.JLabel Email;
+    private javax.swing.JLabel LibrariesMngt;
+    private javax.swing.JLabel Password;
+    private javax.swing.JLabel Role;
     private javax.swing.JButton Tuition;
     private javax.swing.JButton Uniforms;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JPanel accountManagement;
+    private javax.swing.JPanel accountsGrid;
+    private javax.swing.JTextField confirmPassword;
+    private javax.swing.JButton create;
+    private javax.swing.JTextField email;
+    private javax.swing.JPanel headerAccmngmt;
+    private javax.swing.JPanel headerAccounts;
+    private javax.swing.JPanel headerLibraries;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JPanel librariesMngt;
     private javax.swing.JButton otherFees;
-    private javax.swing.JButton otherFees1;
+    private javax.swing.JTextField password;
+    private javax.swing.JComboBox<String> roleSelection;
     // End of variables declaration//GEN-END:variables
 }
