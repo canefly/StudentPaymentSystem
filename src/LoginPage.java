@@ -32,11 +32,14 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        FrgtPw = new javax.swing.JButton();
+        btnEnter = new javax.swing.JButton();
+        chkShowPassword = new javax.swing.JCheckBox();
         emailTxt = new javax.swing.JTextField();
         Email = new javax.swing.JLabel();
         pwTxt = new javax.swing.JPasswordField();
         pw = new javax.swing.JLabel();
+        signInWindow = new javax.swing.JLabel();
         LoginPage = new javax.swing.JLabel();
         dragBarPanel = new javax.swing.JPanel();
 
@@ -50,6 +53,9 @@ public class LoginPage extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        // STEP 1: First focus always goes to email
+        getRootPane().setDefaultButton(null); // Prevent auto-trigger on Enter
+        emailTxt.requestFocusInWindow();
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png")));
         btnClose.setBorderPainted(false);
@@ -107,27 +113,145 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel1.add(btnMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 40, 40));
 
-        jButton1.setText("Forgot Password?");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        FrgtPw.setActionCommand("");
+        FrgtPw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/frgtpass_btn.png")));
+        FrgtPw.setBorderPainted(false);
+        FrgtPw.setContentAreaFilled(false);
+        FrgtPw.setFocusPainted(false);
+        FrgtPw.setOpaque(false);
+
+        FrgtPw.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                FrgtPw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/frgtpass_btn_hover.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                FrgtPw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/frgtpass_btn.png")));
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                FrgtPw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/frgtpass_click_btn.png")));
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                FrgtPw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/frgtpass_btn_hover.png")));
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 530, -1, -1));
+        FrgtPw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FrgtPwActionPerformed(evt);
+            }
+        });
+        jPanel1.add(FrgtPw, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 530, 150, 30));
 
-        emailTxt.setText("jTextField1");
+        btnEnter.setText("");
+        btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/login_btn.png")));
+        btnEnter.setBorderPainted(false);
+        btnEnter.setContentAreaFilled(false);
+        btnEnter.setFocusPainted(false);
+        btnEnter.setOpaque(false);
+
+        btnEnter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/login_btn_hover.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/login_btn.png")));
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/login_btn_click.png")));
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/login_btn_hover.png")));
+            }
+        });
+
+        btnEnter.addActionListener(e -> {
+            btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/login_btn_click.png")));
+            // Run validation
+        });
+        jPanel1.add(btnEnter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 405, 33, 33));
+
+        chkShowPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/eye_hide.png")));
+        chkShowPassword.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/eye_show.png")));
+        chkShowPassword.setBorderPainted(false);
+        chkShowPassword.setContentAreaFilled(false);
+        chkShowPassword.setFocusPainted(false);
+        chkShowPassword.setOpaque(false);
+        chkShowPassword.setRolloverEnabled(false);
+
+        chkShowPassword.addActionListener(e -> {
+            if (chkShowPassword.isSelected()) {
+                pwTxt.setEchoChar((char) 0); // Show password as plain text
+            } else {
+                pwTxt.setEchoChar('•'); // Hide password with bullet (U+2022)
+            }
+        });
+        jPanel1.add(chkShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(1115, 407, 30, 30));
+
+        emailTxt.setBorder(null);
+        emailTxt.setOpaque(false);
+        emailTxt.setBackground(new java.awt.Color(0,0,0,0)); // transparent
+        emailTxt.setForeground(java.awt.Color.BLACK); // or any text color you want
+        emailTxt.setCaretColor(java.awt.Color.BLACK); // cursor color
+        emailTxt.setFont(new java.awt.Font("Helvetica", 0, 18)); // NOI18N
+        emailTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwTxt.requestFocusInWindow(); // move to password field
+            }
+        });
+
+        emailTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/email_active.png")));
+                pw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/pw.png"))); // reset pw
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (emailTxt.getText().trim().isEmpty()) {
+                    Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/email.png")));
+                }
+            }
+        });
         jPanel1.add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 332, 360, 30));
 
         Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/email.png"))); // NOI18N
         jPanel1.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 300, 400, 70));
 
-        pwTxt.setText("jPasswordField1");
-        jPanel1.add(pwTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 420, 310, 30));
+        pwTxt.setBorder(null);
+        pwTxt.setOpaque(false);
+        pwTxt.setBackground(new java.awt.Color(0,0,0,0)); // transparent
+        pwTxt.setForeground(java.awt.Color.BLACK); // text color
+        pwTxt.setCaretColor(java.awt.Color.BLACK); // cursor color
+        pwTxt.setFont(new java.awt.Font("Helvetica", 0, 18)); // NOI18N
+        pwTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnter.doClick(); // simulate clicking login
+            }
+        });
+        pwTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwTxtActionPerformed(evt);
+            }
+        });
+        pwTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/pw_active.png")));
+                Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/email.png"))); // reset email
+            }
+
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (new String(pwTxt.getPassword()).trim().isEmpty()) {
+                    pw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/pw.png")));
+                }
+            }
+        });
+        jPanel1.add(pwTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 420, 290, 30));
 
         pw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/pw.png"))); // NOI18N
         jPanel1.add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 390, 400, -1));
 
-        LoginPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/LoginPage.png"))); // NOI18N
+        signInWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/SigninWindows.png"))); // NOI18N
+        jPanel1.add(signInWindow, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, -1, -1));
+
+        LoginPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/rawLogin.png"))); // NOI18N
         LoginPage.setOpaque(false);
         jPanel1.add(LoginPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -167,9 +291,13 @@ public class LoginPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void FrgtPwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FrgtPwActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_FrgtPwActionPerformed
+
+    private void pwTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,14 +336,17 @@ public class LoginPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Email;
+    private javax.swing.JButton FrgtPw;
     private javax.swing.JLabel LoginPage;
     private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnEnter;
     private javax.swing.JButton btnMin;
+    private javax.swing.JCheckBox chkShowPassword;
     private javax.swing.JPanel dragBarPanel;
     private javax.swing.JTextField emailTxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel pw;
     private javax.swing.JPasswordField pwTxt;
+    private javax.swing.JLabel signInWindow;
     // End of variables declaration//GEN-END:variables
 }
