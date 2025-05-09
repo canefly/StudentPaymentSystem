@@ -337,12 +337,24 @@ public class LoginPage extends javax.swing.JFrame {
     
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()) {
-                        String role = rs.getString("role");
-                        JOptionPane.showMessageDialog(this, "Welcome " + role + "!", "Login Success", JOptionPane.INFORMATION_MESSAGE);
+                        String role = rs.getString("role").toLowerCase();
     
-                        // TODO: Navigate to dashboard
-                        // new AdminDashboard().setVisible(true);
-                        // this.dispose();
+                        switch (role) {
+                            case "admin":
+                                new Admin().setVisible(true);
+                                break;
+                            case "cashier":
+                                new Cashier().setVisible(true);
+                                break;
+                            case "student":
+                                new Student().setVisible(true);
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(this, "Unrecognized role: " + role, "Login Error", JOptionPane.ERROR_MESSAGE);
+                                return;
+                        }
+    
+                        this.dispose(); // Close login window after redirect
                     } else {
                         JOptionPane.showMessageDialog(this, "Invalid email or password.", "Login Failed", JOptionPane.ERROR_MESSAGE);
                     }
@@ -353,6 +365,7 @@ public class LoginPage extends javax.swing.JFrame {
         }
     
     }//GEN-LAST:event_btnEnterActionPerformed
+    
 
     /**
      * @param args the command line arguments

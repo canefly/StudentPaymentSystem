@@ -35,8 +35,10 @@ public class Admin extends javax.swing.JFrame {
         dragBarPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png")));
@@ -95,10 +97,12 @@ public class Admin extends javax.swing.JFrame {
         });
         jPanel1.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 10, 40, 40));
 
-        Border.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/border.png"))); // NOI18N
+        Border.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/border.png")));
+        Border.setOpaque(false);
         jPanel1.add(Border, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/AdminPage.png"))); // NOI18N
+        jLabel1.setOpaque(false);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         dragBarPanel.setOpaque(false);
@@ -134,6 +138,7 @@ public class Admin extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
