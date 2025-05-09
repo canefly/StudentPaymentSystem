@@ -7,7 +7,11 @@
  *
  * @author canef
  */
-import java.awt.*;
+import java.awt.*;              // All AWT classes (e.g., Color, Font, etc.)
+import java.sql.*;              // All SQL-related classes (Connection, PreparedStatement, ResultSet, etc.)
+import javax.swing.*;           // All Swing UI components
+
+
 
 public class LoginPage extends javax.swing.JFrame {
 
@@ -16,6 +20,16 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
+
+           // Delay rootPane access until frame is ready
+    this.addWindowListener(new java.awt.event.WindowAdapter() {
+    public void windowOpened(java.awt.event.WindowEvent e) {
+        getRootPane().setDefaultButton(null);
+        emailTxt.requestFocusInWindow();
+    }
+});
+
+
         setBackground(new java.awt.Color(0, 0, 0, 0));
 
     }
@@ -53,9 +67,6 @@ public class LoginPage extends javax.swing.JFrame {
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        // STEP 1: First focus always goes to email
-        getRootPane().setDefaultButton(null); // Prevent auto-trigger on Enter
-        emailTxt.requestFocusInWindow();
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png")));
         btnClose.setBorderPainted(false);
@@ -113,7 +124,6 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel1.add(btnMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 40, 40));
 
-        FrgtPw.setActionCommand("");
         FrgtPw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/frgtpass_btn.png")));
         FrgtPw.setBorderPainted(false);
         FrgtPw.setContentAreaFilled(false);
@@ -167,6 +177,11 @@ public class LoginPage extends javax.swing.JFrame {
             btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/login_btn_click.png")));
             // Run validation
         });
+        btnEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnterActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnEnter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 405, 33, 33));
 
         chkShowPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/eye_hide.png")));
@@ -208,6 +223,11 @@ public class LoginPage extends javax.swing.JFrame {
                 if (emailTxt.getText().trim().isEmpty()) {
                     Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/email.png")));
                 }
+            }
+        });
+        emailTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailTxtActionPerformed(evt);
             }
         });
         jPanel1.add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 332, 360, 30));
@@ -299,6 +319,41 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pwTxtActionPerformed
 
+    private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+
+        String email = emailTxt.getText().trim();
+        String password = new String(pwTxt.getPassword()).trim();
+    
+        if (email.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter email and password.", "Missing Fields", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    
+        try (Connection conn = db.connect()) {
+            String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, email);
+                stmt.setString(2, password);
+    
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        String role = rs.getString("role");
+                        JOptionPane.showMessageDialog(this, "Welcome " + role + "!", "Login Success", JOptionPane.INFORMATION_MESSAGE);
+    
+                        // TODO: Navigate to dashboard
+                        // new AdminDashboard().setVisible(true);
+                        // this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Invalid email or password.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    }//GEN-LAST:event_btnEnterActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,22 +370,14 @@ public class LoginPage extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginPage().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginPage().setVisible(true);
         });
     }
 
