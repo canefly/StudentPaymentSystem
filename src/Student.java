@@ -15,6 +15,7 @@ public class Student extends javax.swing.JFrame {
      */
     public Student() {
         initComponents();
+        new RoundedCornersMac(this); //rounded corners for mac
         setBackground(new java.awt.Color(0, 0, 0, 0));
     }
 

@@ -15,7 +15,7 @@ public class Admin extends javax.swing.JFrame {
      */
     public Admin() {
         initComponents();
-        setBackground(new java.awt.Color(0, 0, 0, 0));
+        new RoundedCornersMac(this); //rounded corners for mac
     }
 
     /**

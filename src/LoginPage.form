@@ -113,9 +113,6 @@
               <Font name="Helvetica" size="18" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailTxtActionPerformed"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="emailTxt.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        pwTxt.requestFocusInWindow(); // move to password field&#xa;    }&#xa;});&#xa;&#xa;emailTxt.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;    public void focusGained(java.awt.event.FocusEvent evt) {&#xa;        Email.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/labels/email_active.png&quot;)));&#xa;        pw.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/labels/pw.png&quot;))); // reset pw&#xa;    }&#xa;&#xa;    public void focusLost(java.awt.event.FocusEvent evt) {&#xa;        if (emailTxt.getText().trim().isEmpty()) {&#xa;            Email.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/labels/email.png&quot;)));&#xa;        }&#xa;    }&#xa;});"/>
             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="emailTxt.setBorder(null);&#xa;emailTxt.setOpaque(false);&#xa;emailTxt.setBackground(new java.awt.Color(0,0,0,0)); // transparent&#xa;emailTxt.setForeground(java.awt.Color.BLACK); // or any text color you want&#xa;emailTxt.setCaretColor(java.awt.Color.BLACK); // cursor color"/>

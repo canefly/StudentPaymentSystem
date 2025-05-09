@@ -20,16 +20,17 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
-
+        
+        new RoundedCornersMac(this); //rounded corners for mac
+        
            // Delay rootPane access until frame is ready
-    this.addWindowListener(new java.awt.event.WindowAdapter() {
-    public void windowOpened(java.awt.event.WindowEvent e) {
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowOpened(java.awt.event.WindowEvent e) {
         getRootPane().setDefaultButton(null);
         emailTxt.requestFocusInWindow();
     }
 });
-
-
         setBackground(new java.awt.Color(0, 0, 0, 0));
 
     }
@@ -223,11 +224,6 @@ public class LoginPage extends javax.swing.JFrame {
                 if (emailTxt.getText().trim().isEmpty()) {
                     Email.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/email.png")));
                 }
-            }
-        });
-        emailTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTxtActionPerformed(evt);
             }
         });
         jPanel1.add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 332, 360, 30));

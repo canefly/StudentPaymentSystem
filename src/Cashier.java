@@ -8,6 +8,7 @@
  * @author canef
  */
 import java.awt.*;
+
 public class Cashier extends javax.swing.JFrame {
 
     /**
@@ -16,6 +17,7 @@ public class Cashier extends javax.swing.JFrame {
     public Cashier() {
         initComponents();
         setBackground(new java.awt.Color(0, 0, 0, 0));
+        new RoundedCornersMac(this); //rounded corners for mac
     }
 
     /**
