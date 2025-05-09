@@ -1,0 +1,81 @@
+Report created: 
+	5/9/2025	12:56:43 PM
+
+Project name: java ui stud.aep
+
+Source files collected to: 
+	F:\Files\Documents\NetBeansProjects\StudPayment\Documentations\AssetProjects\java ui stud folder
+
+Source files collected: All
+
+Collected comps:  
+	Login page
+	Pre-comp 1
+	bg design
+	bcp-olp-logo-mini2-gigapixel-text-shapes-4x.png Comp 1
+	Pre-comp 2
+	minimize.png Comp 1
+	close.png Comp 1
+	White Solid 6 Comp 1
+	buttons
+	Main page round corners
+	login
+	eye show password
+	login button
+	login warning!
+	forgotpass
+	Signin/Forgot window
+	Admin
+	Student
+	Cashier
+	
+Number of collected files:  16
+
+Size of collected files:  1.2 MB
+
+Collected source files: 
+	C:\Users\canef\Downloads\assets\close.png
+	C:\Users\canef\Downloads\assets\minimize.png
+	C:\Users\canef\Downloads\bcp-olp-logo-mini2-gigapixel-text-shapes-4x.png
+	C:\Users\canef\Downloads\bcp-olp-logo-mini2.png
+	C:\Users\canef\Downloads\Contacts UI.jpg
+	C:\Users\canef\Downloads\Food delivery User dashboard - Rishabh Rai (1).jpg
+	C:\Users\canef\Downloads\Food delivery User dashboard - Rishabh Rai.jpg
+	C:\Users\canef\Downloads\Screenshot 2025-05-08 234253.png
+	C:\Users\canef\Downloads\svgtopng (1)\arrow-right-circle-svgrepo-com.png
+	C:\Users\canef\Downloads\svgtopng (1)\hide-svgrepo-com (1).png
+	C:\Users\canef\Downloads\svgtopng (1)\show-svgrepo-com.png
+	C:\Users\canef\Downloads\svgtopng (2)\briefcase-alt-svgrepo-com.png
+	C:\Users\canef\Downloads\svgtopng (2)\calculator-svgrepo-com.png
+	C:\Users\canef\Downloads\svgtopng (2)\clock-svgrepo-com.png
+	C:\Users\canef\Downloads\svgtopng (2)\cog-svgrepo-com.png
+	C:\Users\canef\Downloads\svgtopng (2)\users-svgrepo-com.png
+	
+Rendering plug-ins:
+	Classic 3D
+	
+Effects used:  9
+
+Effect:  BCC LED OBSOLETE
+	
+Effect:  CC Toner
+	
+Effect:  Color Range
+	
+Effect:  Drop Shadow
+	
+Effect:  Fill
+	
+Effect:  Gaussian Blur
+	
+Effect:  Grid
+	
+Effect:  Lumetri Color
+	
+Effect:  Roughen Edges
+	
+
+Layer:  Text Layer
+	External dependencies:  
+		Font family: “Helvetica”, Font style: “Bold”
+
