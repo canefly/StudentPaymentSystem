@@ -31,22 +31,36 @@ public class Admin extends javax.swing.JFrame {
         dragBarPanel = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        Border = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        Main = new javax.swing.JPanel();
+        sideNav = new javax.swing.JPanel();
         Sales = new javax.swing.JButton();
         Security = new javax.swing.JButton();
         PGFbtn = new javax.swing.JButton();
         Accounts = new javax.swing.JButton();
         Dashboard = new javax.swing.JButton();
-        RawPanel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        RawPanel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dragBarPanel.setOpaque(false);
+        dragBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        final Point[] mousePoint = {null};
+
+        dragBarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mousePoint[0] = evt.getPoint();
+            }
+        });
+
+        dragBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                Point location = evt.getLocationOnScreen();
+                setLocation(location.x - mousePoint[0].x, location.y - mousePoint[0].y);
+            }
+        });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png")));
         btnClose.setBorderPainted(false);
@@ -75,7 +89,10 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png"))); // NOI18N
+        btnClose.setAlignmentX(0.2F);
         btnClose.setContentAreaFilled(false);
+        btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dragBarPanel.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1227, 2, 40, 40));
 
         btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png")));
         btnMin.setBorderPainted(false);
@@ -105,56 +122,19 @@ public class Admin extends javax.swing.JFrame {
         });
         btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png"))); // NOI18N
         btnMin.setContentAreaFilled(false);
-
-        final Point[] mousePoint = {null};
-
-        dragBarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                mousePoint[0] = evt.getPoint();
-            }
-        });
-
-        dragBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                Point location = evt.getLocationOnScreen();
-                setLocation(location.x - mousePoint[0].x, location.y - mousePoint[0].y);
-            }
-        });
-
-        javax.swing.GroupLayout dragBarPanelLayout = new javax.swing.GroupLayout(dragBarPanel);
-        dragBarPanel.setLayout(dragBarPanelLayout);
-        dragBarPanelLayout.setHorizontalGroup(
-            dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dragBarPanelLayout.createSequentialGroup()
-                .addContainerGap(1156, Short.MAX_VALUE)
-                .addComponent(btnMin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-        dragBarPanelLayout.setVerticalGroup(
-            dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dragBarPanelLayout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addGroup(dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        btnMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dragBarPanel.add(btnMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1178, 2, 40, 40));
 
         getContentPane().add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(1280, 720));
-        jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Main.setMaximumSize(new java.awt.Dimension(1280, 720));
+        Main.setOpaque(false);
+        Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Border.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/border.png")));
-        Border.setOpaque(false);
-        jPanel1.add(Border, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jPanel2.setMaximumSize(new java.awt.Dimension(1280, 720));
-        jPanel2.setOpaque(false);
-        jPanel2.setLayout(null);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        sideNav.setMaximumSize(new java.awt.Dimension(1280, 720));
+        sideNav.setOpaque(false);
+        sideNav.setLayout(null);
+        sideNav.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Sales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminSales_inactive_btn.png"))); // NOI18N
         Sales.setContentAreaFilled(false);
@@ -188,7 +168,7 @@ public class Admin extends javax.swing.JFrame {
                 Sales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSales_inactive_hover_btn.png")));
             }
         });
-        jPanel2.add(Sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 426, 280, 50));
+        sideNav.add(Sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 426, 280, 50));
 
         Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminSec_inactive_btn.png"))); // NOI18N
         Security.setContentAreaFilled(false);
@@ -222,7 +202,7 @@ public class Admin extends javax.swing.JFrame {
                 Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSec_inactive_hover_btn.png")));
             }
         });
-        jPanel2.add(Security, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 366, 280, 50));
+        sideNav.add(Security, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 366, 280, 50));
 
         PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminPGF_inactive_btn.png"))); // NOI18N
         PGFbtn.setContentAreaFilled(false);
@@ -256,7 +236,7 @@ public class Admin extends javax.swing.JFrame {
                 PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminPGF_inactive_hover_btn.png")));
             }
         });
-        jPanel2.add(PGFbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 307, 280, 50));
+        sideNav.add(PGFbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 307, 280, 50));
 
         Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminAccounts_inactive_btn.png"))); // NOI18N
         Accounts.setBorderPainted(false);
@@ -284,7 +264,7 @@ public class Admin extends javax.swing.JFrame {
                 AccountsActionPerformed(evt);
             }
         });
-        jPanel2.add(Accounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 245, 280, 50));
+        sideNav.add(Accounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 245, 280, 50));
 
         Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminDashboard_inactive_btn.png"))); // NOI18N
         Dashboard.setBorderPainted(false);
@@ -292,7 +272,7 @@ public class Admin extends javax.swing.JFrame {
         Dashboard.setFocusPainted(false);
         Dashboard.setBorderPainted(false);
         Dashboard.setContentAreaFilled(false);
-        Dashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        Dashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Dashboard.setIconTextGap(0);
         Dashboard.setMargin(new java.awt.Insets(0, 0, 0, 0));
         Dashboard.setOpaque(false);
@@ -315,19 +295,19 @@ public class Admin extends javax.swing.JFrame {
                 DashboardActionPerformed(evt);
             }
         });
-        jPanel2.add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 185, 280, 50));
+        sideNav.add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 185, 280, 50));
 
-        RawPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin_Skeletal - Copy.png"))); // NOI18N
-        jPanel2.add(RawPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/AdminPage.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/AdminPageNew.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setOpaque(false);
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        sideNav.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        RawPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin_Skeletal - Copy.png"))); // NOI18N
+        sideNav.add(RawPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        Main.add(sideNav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(Main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
         setLocationRelativeTo(null);
@@ -378,8 +358,8 @@ public class Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Accounts;
-    private javax.swing.JLabel Border;
     private javax.swing.JButton Dashboard;
+    private javax.swing.JPanel Main;
     private javax.swing.JButton PGFbtn;
     private javax.swing.JLabel RawPanel;
     private javax.swing.JButton Sales;
@@ -388,7 +368,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btnMin;
     private javax.swing.JPanel dragBarPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel sideNav;
     // End of variables declaration//GEN-END:variables
 }

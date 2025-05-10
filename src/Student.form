@@ -104,28 +104,6 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnMin">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/min_btn.png&quot;)));&#xa;btnMin.setBorderPainted(false);&#xa;btnMin.setContentAreaFilled(false);&#xa;btnMin.setFocusPainted(false);&#xa;btnMin.setOpaque(false);&#xa;&#xa;btnMin.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/min_hover_btn.png&quot;)));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/min_btn.png&quot;)));&#xa;    }&#xa;    public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;        btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/min_click_btn.png&quot;)));&#xa;    }&#xa;    public void mouseReleased(java.awt.event.MouseEvent evt) {&#xa;        btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/min_hover_btn.png&quot;)));&#xa;    }&#xa;});&#xa;&#xa;btnMin.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        ((java.awt.Frame) btnMin.getTopLevelAncestor()).setState(java.awt.Frame.ICONIFIED);&#xa;    }&#xa;});"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1160" y="10" width="40" height="40"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnClose">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JButton()"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/close_btn.png&quot;)));&#xa;btnClose.setBorderPainted(false);&#xa;btnClose.setContentAreaFilled(false);&#xa;btnClose.setFocusPainted(false);&#xa;btnClose.setOpaque(false);&#xa;&#xa;btnClose.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/close_hover_btn.png&quot;)));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/close_btn.png&quot;)));&#xa;    }&#xa;    public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/close_click_btn.png&quot;)));&#xa;    }&#xa;    public void mouseReleased(java.awt.event.MouseEvent evt) {&#xa;        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/close_hover_btn.png&quot;)));&#xa;    }&#xa;});&#xa;&#xa;btnClose.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        System.exit(0);&#xa;    }&#xa;});"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1220" y="10" width="40" height="40"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JLabel" name="Border">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
