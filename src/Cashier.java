@@ -29,6 +29,9 @@ public class Cashier extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dragBarPanel1 = new javax.swing.JPanel();
+        btnClose1 = new javax.swing.JButton();
+        btnMin1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btnMin = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
@@ -39,6 +42,103 @@ public class Cashier extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        dragBarPanel1.setOpaque(false);
+
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png")));
+        btnClose.setBorderPainted(false);
+        btnClose.setContentAreaFilled(false);
+        btnClose.setFocusPainted(false);
+        btnClose.setOpaque(false);
+
+        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_hover_btn.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png")));
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_click_btn.png")));
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_hover_btn.png")));
+            }
+        });
+
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                System.exit(0);
+            }
+        });
+        btnClose1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png"))); // NOI18N
+        btnClose1.setContentAreaFilled(false);
+
+        btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png")));
+        btnMin.setBorderPainted(false);
+        btnMin.setContentAreaFilled(false);
+        btnMin.setFocusPainted(false);
+        btnMin.setOpaque(false);
+
+        btnMin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_hover_btn.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png")));
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_click_btn.png")));
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_hover_btn.png")));
+            }
+        });
+
+        btnMin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ((java.awt.Frame) btnMin.getTopLevelAncestor()).setState(java.awt.Frame.ICONIFIED);
+            }
+        });
+        btnMin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png"))); // NOI18N
+        btnMin1.setContentAreaFilled(false);
+
+        final Point[] mousePoint = {null};
+
+        dragBarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mousePoint[0] = evt.getPoint();
+            }
+        });
+
+        dragBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                Point location = evt.getLocationOnScreen();
+                setLocation(location.x - mousePoint[0].x, location.y - mousePoint[0].y);
+            }
+        });
+
+        javax.swing.GroupLayout dragBarPanel1Layout = new javax.swing.GroupLayout(dragBarPanel1);
+        dragBarPanel1.setLayout(dragBarPanel1Layout);
+        dragBarPanel1Layout.setHorizontalGroup(
+            dragBarPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dragBarPanel1Layout.createSequentialGroup()
+                .addContainerGap(1156, Short.MAX_VALUE)
+                .addComponent(btnMin1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnClose1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+        dragBarPanel1Layout.setVerticalGroup(
+            dragBarPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dragBarPanel1Layout.createSequentialGroup()
+                .addGap(0, 10, Short.MAX_VALUE)
+                .addGroup(dragBarPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnClose1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMin1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        getContentPane().add(dragBarPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -181,8 +281,11 @@ public class Cashier extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Border;
     private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnClose1;
     private javax.swing.JButton btnMin;
+    private javax.swing.JButton btnMin1;
     private javax.swing.JPanel dragBarPanel;
+    private javax.swing.JPanel dragBarPanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

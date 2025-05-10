@@ -44,9 +44,10 @@ public class LoginPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        dragBarPanel = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         FrgtPw = new javax.swing.JButton();
         btnEnter = new javax.swing.JButton();
         chkShowPassword = new javax.swing.JCheckBox();
@@ -56,7 +57,6 @@ public class LoginPage extends javax.swing.JFrame {
         pw = new javax.swing.JLabel();
         signInWindow = new javax.swing.JLabel();
         LoginPage = new javax.swing.JLabel();
-        dragBarPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LoginPage");
@@ -66,8 +66,7 @@ public class LoginPage extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        dragBarPanel.setOpaque(false);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png")));
         btnClose.setBorderPainted(false);
@@ -95,7 +94,8 @@ public class LoginPage extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
-        jPanel1.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 10, 40, 40));
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png"))); // NOI18N
+        btnClose.setContentAreaFilled(false);
 
         btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png")));
         btnMin.setBorderPainted(false);
@@ -123,7 +123,48 @@ public class LoginPage extends javax.swing.JFrame {
                 ((java.awt.Frame) btnMin.getTopLevelAncestor()).setState(java.awt.Frame.ICONIFIED);
             }
         });
-        jPanel1.add(btnMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 40, 40));
+        btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png"))); // NOI18N
+        btnMin.setContentAreaFilled(false);
+
+        final Point[] mousePoint = {null};
+
+        dragBarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mousePoint[0] = evt.getPoint();
+            }
+        });
+
+        dragBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                Point location = evt.getLocationOnScreen();
+                setLocation(location.x - mousePoint[0].x, location.y - mousePoint[0].y);
+            }
+        });
+
+        javax.swing.GroupLayout dragBarPanelLayout = new javax.swing.GroupLayout(dragBarPanel);
+        dragBarPanel.setLayout(dragBarPanelLayout);
+        dragBarPanelLayout.setHorizontalGroup(
+            dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dragBarPanelLayout.createSequentialGroup()
+                .addContainerGap(1156, Short.MAX_VALUE)
+                .addComponent(btnMin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+        dragBarPanelLayout.setVerticalGroup(
+            dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dragBarPanelLayout.createSequentialGroup()
+                .addGap(0, 10, Short.MAX_VALUE)
+                .addGroup(dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        getContentPane().add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
+
+        jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FrgtPw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/labels/frgtpass_btn.png")));
         FrgtPw.setBorderPainted(false);
@@ -270,36 +311,6 @@ public class LoginPage extends javax.swing.JFrame {
         LoginPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/rawLogin.png"))); // NOI18N
         LoginPage.setOpaque(false);
         jPanel1.add(LoginPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        dragBarPanel.setOpaque(false);
-
-        final Point[] mousePoint = {null};
-
-        dragBarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                mousePoint[0] = evt.getPoint();
-            }
-        });
-
-        dragBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                Point location = evt.getLocationOnScreen();
-                setLocation(location.x - mousePoint[0].x, location.y - mousePoint[0].y);
-            }
-        });
-
-        javax.swing.GroupLayout dragBarPanelLayout = new javax.swing.GroupLayout(dragBarPanel);
-        dragBarPanel.setLayout(dragBarPanelLayout);
-        dragBarPanelLayout.setHorizontalGroup(
-            dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
-        );
-        dragBarPanelLayout.setVerticalGroup(
-            dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
