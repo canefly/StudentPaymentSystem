@@ -16,6 +16,7 @@ public class Admin extends javax.swing.JFrame {
     public Admin() {
         initComponents();
         new RoundedCornersMac(this); //rounded corners for mac
+        setBackground(new java.awt.Color(0, 0, 0, 0));
     }
 
     /**
@@ -33,14 +34,18 @@ public class Admin extends javax.swing.JFrame {
         btnMin = new javax.swing.JButton();
         Border = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        Security = new javax.swing.JButton();
+        PGFbtn = new javax.swing.JButton();
+        Accounts = new javax.swing.JButton();
         Dashboard = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        RawPanel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(1280, 720));
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -141,15 +146,116 @@ public class Admin extends javax.swing.JFrame {
         Border.setOpaque(false);
         jPanel1.add(Border, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jPanel2.setMaximumSize(new java.awt.Dimension(1280, 720));
         jPanel2.setOpaque(false);
+        jPanel2.setLayout(null);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminSec_inactive_btn.png"))); // NOI18N
+        Security.setContentAreaFilled(false);
+        Security.setMaximumSize(new java.awt.Dimension(254, 52));
+        Security.setMinimumSize(new java.awt.Dimension(252, 52));
+        Security.setBorderPainted(false);
+        Security.setContentAreaFilled(false);
+        Security.setFocusPainted(false);
+        Security.setBorderPainted(false);
+
+        Security.setContentAreaFilled(false);
+
+        Security.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        PGFbtn.setIconTextGap(0);
+
+        PGFbtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        PGFbtn.setOpaque(false);
+        PGFbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSec_inactive_hover_btn.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminSec_inactive_btn.png")));
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminSec_click_btn.png")));
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSec_inactive_hover_btn.png")));
+            }
+        });
+        jPanel2.add(Security, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 366, 280, 50));
+
+        PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminPGF_inactive_btn.png"))); // NOI18N
+        PGFbtn.setContentAreaFilled(false);
+        PGFbtn.setMaximumSize(new java.awt.Dimension(254, 52));
+        PGFbtn.setMinimumSize(new java.awt.Dimension(252, 52));
+        PGFbtn.setBorderPainted(false);
+        PGFbtn.setContentAreaFilled(false);
+        PGFbtn.setFocusPainted(false);
+        PGFbtn.setBorderPainted(false);
+
+        PGFbtn.setContentAreaFilled(false);
+
+        PGFbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        PGFbtn.setIconTextGap(0);
+
+        PGFbtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        PGFbtn.setOpaque(false);
+        PGFbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminPGF_inactive_hover_btn.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminPGF_inactive_btn.png")));
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminPGF_click_btn.png")));
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminPGF_inactive_hover_btn.png")));
+            }
+        });
+        jPanel2.add(PGFbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 307, 280, 50));
+
+        Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminAccounts_inactive_btn.png"))); // NOI18N
+        Accounts.setBorderPainted(false);
+        Accounts.setContentAreaFilled(false);
+        Accounts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Accounts.setIconTextGap(0);
+        Accounts.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        Accounts.setOpaque(false);
+        Accounts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminAccounts_inactive_hover_btn.png")));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminAccounts_inactive_btn.png")));
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminAccounts_click_btn.png")));
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminAccounts_inactive_hover_btn.png")));
+            }
+        });
+        Accounts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AccountsActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Accounts, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 245, 280, 50));
+
         Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminDashboard_inactive_btn.png"))); // NOI18N
-        btnMin.setBorderPainted(false);
-        btnMin.setContentAreaFilled(false);
-        btnMin.setFocusPainted(false);
         Dashboard.setBorderPainted(false);
         Dashboard.setContentAreaFilled(false);
+        Dashboard.setFocusPainted(false);
+        Dashboard.setBorderPainted(false);
+        Dashboard.setContentAreaFilled(false);
+        Dashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Dashboard.setIconTextGap(0);
+        Dashboard.setMargin(new java.awt.Insets(0, 0, 0, 0));
         Dashboard.setOpaque(false);
         Dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -170,14 +276,15 @@ public class Admin extends javax.swing.JFrame {
                 DashboardActionPerformed(evt);
             }
         });
-        jPanel2.add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel2.add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 185, 280, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/AdminPage.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setOpaque(false);
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin_Skeletal.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        RawPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin_Skeletal - Copy.png"))); // NOI18N
+        jPanel2.add(RawPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -190,6 +297,10 @@ public class Admin extends javax.swing.JFrame {
     private void DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DashboardActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DashboardActionPerformed
+
+    private void AccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AccountsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,13 +338,16 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Accounts;
     private javax.swing.JLabel Border;
     private javax.swing.JButton Dashboard;
+    private javax.swing.JButton PGFbtn;
+    private javax.swing.JLabel RawPanel;
+    private javax.swing.JButton Security;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMin;
     private javax.swing.JPanel dragBarPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

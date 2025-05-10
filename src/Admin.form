@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="undecorated" type="boolean" value="true"/>
@@ -28,6 +28,9 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1280, 720]"/>
+        </Property>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Constraints>
@@ -109,10 +112,16 @@
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1280, 720]"/>
+            </Property>
             <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="false" type="code"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jPanel2.setLayout(null);"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
@@ -123,13 +132,94 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JButton" name="Security">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/icons/Admin-inactive/AdminSec_inactive_btn.png"/>
+                </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[254, 52]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[252, 52]"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Security.setBorderPainted(false);&#xa;Security.setContentAreaFilled(false);&#xa;Security.setFocusPainted(false);&#xa;Security.setBorderPainted(false);&#xa;&#xa;Security.setContentAreaFilled(false);&#xa;&#xa;Security.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));&#xa;&#xa;PGFbtn.setIconTextGap(0);&#xa;&#xa;PGFbtn.setMargin(new java.awt.Insets(0, 0, 0, 0));&#xa;&#xa;PGFbtn.setOpaque(false);&#xa;PGFbtn.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        Security.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/admin-inactive-hover/AdminSec_inactive_hover_btn.png&quot;)));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        Security.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/Admin-inactive/AdminSec_inactive_btn.png&quot;)));&#xa;    }&#xa;    public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;        Security.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/Admin-click/AdminSec_click_btn.png&quot;)));&#xa;    }&#xa;    public void mouseReleased(java.awt.event.MouseEvent evt) {&#xa;        Security.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/admin-inactive-hover/AdminSec_inactive_hover_btn.png&quot;)));&#xa;    }&#xa;});"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="29" y="366" width="280" height="50"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JButton" name="PGFbtn">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/icons/Admin-inactive/AdminPGF_inactive_btn.png"/>
+                </Property>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[254, 52]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[252, 52]"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="PGFbtn.setBorderPainted(false);&#xa;PGFbtn.setContentAreaFilled(false);&#xa;PGFbtn.setFocusPainted(false);&#xa;PGFbtn.setBorderPainted(false);&#xa;&#xa;PGFbtn.setContentAreaFilled(false);&#xa;&#xa;PGFbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));&#xa;&#xa;PGFbtn.setIconTextGap(0);&#xa;&#xa;PGFbtn.setMargin(new java.awt.Insets(0, 0, 0, 0));&#xa;&#xa;PGFbtn.setOpaque(false);&#xa;PGFbtn.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/admin-inactive-hover/AdminPGF_inactive_hover_btn.png&quot;)));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/Admin-inactive/AdminPGF_inactive_btn.png&quot;)));&#xa;    }&#xa;    public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;        PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/Admin-click/AdminPGF_click_btn.png&quot;)));&#xa;    }&#xa;    public void mouseReleased(java.awt.event.MouseEvent evt) {&#xa;        PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/admin-inactive-hover/AdminPGF_inactive_hover_btn.png&quot;)));&#xa;    }&#xa;});"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="29" y="307" width="280" height="50"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JButton" name="Accounts">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/assets/icons/Admin-inactive/AdminAccounts_inactive_btn.png"/>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+                <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+                <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="false" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AccountsActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Accounts.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/admin-inactive-hover/AdminAccounts_inactive_hover_btn.png&quot;)));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/Admin-inactive/AdminAccounts_inactive_btn.png&quot;)));&#xa;    }&#xa;    public void mousePressed(java.awt.event.MouseEvent evt) {&#xa;        Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/Admin-click/AdminAccounts_click_btn.png&quot;)));&#xa;    }&#xa;    public void mouseReleased(java.awt.event.MouseEvent evt) {&#xa;        Accounts.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/assets/icons/admin-inactive-hover/AdminAccounts_inactive_hover_btn.png&quot;)));&#xa;    }&#xa;});"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="29" y="245" width="280" height="50"/>
+                </Constraint>
+              </Constraints>
+            </Component>
             <Component class="javax.swing.JButton" name="Dashboard">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor" postCode="btnMin.setBorderPainted(false);&#xa;btnMin.setContentAreaFilled(false);&#xa;btnMin.setFocusPainted(false);">
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor" postCode="Dashboard.setBorderPainted(false);&#xa;Dashboard.setContentAreaFilled(false);&#xa;Dashboard.setFocusPainted(false);">
                   <Image iconType="3" name="/assets/icons/Admin-inactive/AdminDashboard_inactive_btn.png"/>
                 </Property>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+                <Property name="iconTextGap" type="int" value="0"/>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
                 <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="false" type="code"/>
                 </Property>
@@ -142,7 +232,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="30" y="180" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="29" y="185" width="280" height="50"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -151,20 +241,23 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/assets/AdminPage.png"/>
                 </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Default Cursor"/>
+                </Property>
                 <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="false" type="code"/>
                 </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="1280" height="-1"/>
+                  <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="RawPanel">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/assets/Admin_Skeletal.png"/>
+                  <Image iconType="3" name="/assets/Admin_Skeletal - Copy.png"/>
                 </Property>
               </Properties>
               <Constraints>
