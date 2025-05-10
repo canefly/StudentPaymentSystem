@@ -100,7 +100,7 @@ public class Student extends javax.swing.JFrame {
 
         Border.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/border.png")));
         Border.setOpaque(false);
-        jPanel1.add(Border, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(Border, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/StudentPage.png"))); // NOI18N
         jLabel1.setOpaque(false);
