@@ -29,8 +29,8 @@ public class Student extends javax.swing.JFrame {
     private void initComponents() {
 
         dragBarPanel = new javax.swing.JPanel();
-        btnClose1 = new javax.swing.JButton();
-        btnMin1 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnMin = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         Border = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -40,6 +40,21 @@ public class Student extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dragBarPanel.setOpaque(false);
+        dragBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        final Point[] mousePoint = {null};
+
+        dragBarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mousePoint[0] = evt.getPoint();
+            }
+        });
+
+        dragBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                Point location = evt.getLocationOnScreen();
+                setLocation(location.x - mousePoint[0].x, location.y - mousePoint[0].y);
+            }
+        });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png")));
         btnClose.setBorderPainted(false);
@@ -67,8 +82,11 @@ public class Student extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
-        btnClose1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png"))); // NOI18N
-        btnClose1.setContentAreaFilled(false);
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/close_btn.png"))); // NOI18N
+        btnClose.setAlignmentX(0.2F);
+        btnClose.setContentAreaFilled(false);
+        btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dragBarPanel.add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1227, 2, 40, 40));
 
         btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png")));
         btnMin.setBorderPainted(false);
@@ -96,43 +114,10 @@ public class Student extends javax.swing.JFrame {
                 ((java.awt.Frame) btnMin.getTopLevelAncestor()).setState(java.awt.Frame.ICONIFIED);
             }
         });
-        btnMin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png"))); // NOI18N
-        btnMin1.setContentAreaFilled(false);
-
-        final Point[] mousePoint = {null};
-
-        dragBarPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                mousePoint[0] = evt.getPoint();
-            }
-        });
-
-        dragBarPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                Point location = evt.getLocationOnScreen();
-                setLocation(location.x - mousePoint[0].x, location.y - mousePoint[0].y);
-            }
-        });
-
-        javax.swing.GroupLayout dragBarPanelLayout = new javax.swing.GroupLayout(dragBarPanel);
-        dragBarPanel.setLayout(dragBarPanelLayout);
-        dragBarPanelLayout.setHorizontalGroup(
-            dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dragBarPanelLayout.createSequentialGroup()
-                .addContainerGap(1156, Short.MAX_VALUE)
-                .addComponent(btnMin1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnClose1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-        dragBarPanelLayout.setVerticalGroup(
-            dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dragBarPanelLayout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addGroup(dragBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnClose1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMin1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        btnMin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/min_btn.png"))); // NOI18N
+        btnMin.setContentAreaFilled(false);
+        btnMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dragBarPanel.add(btnMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1178, 2, 40, 40));
 
         getContentPane().add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
 
@@ -190,8 +175,8 @@ public class Student extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Border;
-    private javax.swing.JButton btnClose1;
-    private javax.swing.JButton btnMin1;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnMin;
     private javax.swing.JPanel dragBarPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

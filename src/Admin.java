@@ -28,22 +28,29 @@ public class Admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Main = new javax.swing.JPanel();
         dragBarPanel = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
-        Main = new javax.swing.JPanel();
+        mainContent = new javax.swing.JPanel();
         sideNav = new javax.swing.JPanel();
         Sales = new javax.swing.JButton();
         Security = new javax.swing.JButton();
         PGFbtn = new javax.swing.JButton();
         Accounts = new javax.swing.JButton();
         Dashboard = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         RawPanel = new javax.swing.JLabel();
+        Guide = new javax.swing.JLabel();
+        DefaultBg = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Admin");
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Main.setMaximumSize(new java.awt.Dimension(1280, 720));
+        Main.setOpaque(false);
+        Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dragBarPanel.setOpaque(false);
         dragBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,11 +132,11 @@ public class Admin extends javax.swing.JFrame {
         btnMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dragBarPanel.add(btnMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1178, 2, 40, 40));
 
-        getContentPane().add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
+        Main.add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
 
-        Main.setMaximumSize(new java.awt.Dimension(1280, 720));
-        Main.setOpaque(false);
-        Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainContent.setOpaque(false);
+        mainContent.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Main.add(mainContent, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         sideNav.setMaximumSize(new java.awt.Dimension(1280, 720));
         sideNav.setOpaque(false);
@@ -297,15 +304,18 @@ public class Admin extends javax.swing.JFrame {
         });
         sideNav.add(Dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 185, 280, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/AdminPageNew.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel1.setOpaque(false);
-        sideNav.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        RawPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin_Skeletal - Copy.png"))); // NOI18N
+        RawPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/Admin_SideNav.png"))); // NOI18N
         sideNav.add(RawPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        Guide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/AdminPageNew.png"))); // NOI18N
+        Guide.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Guide.setOpaque(false);
+        sideNav.add(Guide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         Main.add(sideNav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        DefaultBg.setOpaque(false);
+        Main.add(DefaultBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(Main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -359,6 +369,8 @@ public class Admin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Accounts;
     private javax.swing.JButton Dashboard;
+    private javax.swing.JPanel DefaultBg;
+    private javax.swing.JLabel Guide;
     private javax.swing.JPanel Main;
     private javax.swing.JButton PGFbtn;
     private javax.swing.JLabel RawPanel;
@@ -367,7 +379,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMin;
     private javax.swing.JPanel dragBarPanel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel mainContent;
     private javax.swing.JPanel sideNav;
     // End of variables declaration//GEN-END:variables
 }
