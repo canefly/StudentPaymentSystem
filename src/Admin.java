@@ -70,11 +70,11 @@ public class Admin extends javax.swing.JFrame {
         Guide.setOpaque(false);
         DefaultBg.add(Guide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        Main.add(DefaultBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
         DashPanel.setOpaque(false);
         DashPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        DefaultBg.add(DashPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1280, 720));
-
-        Main.add(DefaultBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        Main.add(DashPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         sideNav.setMaximumSize(new java.awt.Dimension(1280, 720));
         sideNav.setOpaque(false);
