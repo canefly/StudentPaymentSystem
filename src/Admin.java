@@ -5,11 +5,21 @@
 
 
 import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 
 
 public class Admin extends javax.swing.JFrame {
 
-    
+        private JButton activeButton; // Tracks which nav button is active
+
+    // Dashboard PNGs
+    private final ImageIcon dashDefault = new ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminDashboard_inactive_btn.png"));
+    private final ImageIcon dashHover = new ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminDashboard_inactive_hover_btn.png"));
+    private final ImageIcon dashClick = new ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminDashboard_click_btn.png"));
+    private final ImageIcon dashActive = new ImageIcon(getClass().getResource("/assets/icons/Admin-active/AdminDashboard_active_btn.png"));
+
     
     
     public Admin() {
@@ -17,13 +27,6 @@ public class Admin extends javax.swing.JFrame {
         new RoundedCornersMac(this); //rounded corners for mac
         setBackground(new java.awt.Color(0, 0, 0, 0));
     }
-
-    private JButton activeButton;
-
-    private final ImageIcon dashDefault = new ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminDashboard_inactive_btn.png"));
-    private final ImageIcon dashHover = new ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminDashboard_inactive_hover_btn.png"));
-    private final ImageIcon dashClick = new ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminDashboard_click_btn.png"));
-    private final ImageIcon dashActive = new ImageIcon(getClass().getResource("/assets/icons/Admin-active/AdminDashboard_active_btn.png"));
 
     
     /**
@@ -37,11 +40,9 @@ public class Admin extends javax.swing.JFrame {
 
         Main = new javax.swing.JPanel();
         DashPanel = new javax.swing.JPanel();
-        DefaultBg = new javax.swing.JPanel();
         Time = new javax.swing.JLabel();
         roleIdentifier1 = new javax.swing.JLabel();
-        defaultLayout = new javax.swing.JLabel();
-        Guide = new javax.swing.JLabel();
+        dash = new javax.swing.JLabel();
         sideNav = new javax.swing.JPanel();
         Sales = new javax.swing.JButton();
         Security = new javax.swing.JButton();
@@ -49,6 +50,8 @@ public class Admin extends javax.swing.JFrame {
         Accounts = new javax.swing.JButton();
         Dashboard = new javax.swing.JButton();
         RawPanel = new javax.swing.JLabel();
+        DefaultBg = new javax.swing.JPanel();
+        bg = new javax.swing.JLabel();
         dragBarPanel = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
@@ -64,30 +67,21 @@ public class Admin extends javax.swing.JFrame {
 
         DashPanel.setOpaque(false);
         DashPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Main.add(DashPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
-
-        DefaultBg.setOpaque(false);
-        DefaultBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Time.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         Time.setForeground(new java.awt.Color(30, 53, 118));
         Time.setText("00:00 PM");
-        DefaultBg.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(1179, 60, -1, 20));
+        DashPanel.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(1179, 60, -1, 20));
 
         roleIdentifier1.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
         roleIdentifier1.setForeground(new java.awt.Color(30, 53, 118));
         roleIdentifier1.setText("Admin");
-        DefaultBg.add(roleIdentifier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
+        DashPanel.add(roleIdentifier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
 
-        defaultLayout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Contents.png"))); // NOI18N
-        DefaultBg.add(defaultLayout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        dash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/Dashboard.png"))); // NOI18N
+        DashPanel.add(dash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Guide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/AdminPageNew.png"))); // NOI18N
-        Guide.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Guide.setOpaque(false);
-        DefaultBg.add(Guide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        Main.add(DefaultBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        Main.add(DashPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         sideNav.setMaximumSize(new java.awt.Dimension(1280, 720));
         sideNav.setOpaque(false);
@@ -236,16 +230,25 @@ public class Admin extends javax.swing.JFrame {
         Dashboard.setOpaque(false);
         Dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminDashboard_inactive_hover_btn.png")));
+                if (activeButton != Dashboard) {
+                    Dashboard.setIcon(dashHover);
+                }
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminDashboard_inactive_btn.png")));
+                if (activeButton != Dashboard) {
+                    Dashboard.setIcon(dashDefault);
+                }
             }
+
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminDashboard_click_btn.png")));
+                Dashboard.setIcon(dashClick);
             }
+
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                Dashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminDashboard_inactive_hover_btn.png")));
+                if (activeButton != Dashboard) {
+                    Dashboard.setIcon(dashHover);
+                }
             }
         });
         Dashboard.addActionListener(new java.awt.event.ActionListener() {
@@ -259,6 +262,14 @@ public class Admin extends javax.swing.JFrame {
         sideNav.add(RawPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Main.add(sideNav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        DefaultBg.setOpaque(false);
+        DefaultBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bg.png"))); // NOI18N
+        DefaultBg.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Main.add(DefaultBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         getContentPane().add(Main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
@@ -348,8 +359,29 @@ public class Admin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void resetNavIcons() {
+    if (activeButton != Dashboard) {
+        Dashboard.setIcon(dashDefault);
+    }
+}
+
+    private void switchPanel(javax.swing.JPanel panel, javax.swing.JButton button, ImageIcon activeIcon) {
+        // Hide all panels
+        DashPanel.setVisible(false);
+        // Add more here later like: SalesPanel.setVisible(false);
+
+        // Show selected
+        panel.setVisible(true);
+
+        // Update nav icons
+        resetNavIcons();
+        button.setIcon(activeIcon);
+        activeButton = button;
+    }
+
+    
     private void DashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DashboardActionPerformed
-        // TODO add your handling code here:
+        switchPanel(DashPanel, Dashboard, dashActive);
     }//GEN-LAST:event_DashboardActionPerformed
 
     private void AccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountsActionPerformed
@@ -396,16 +428,16 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel DashPanel;
     private javax.swing.JButton Dashboard;
     private javax.swing.JPanel DefaultBg;
-    private javax.swing.JLabel Guide;
     private javax.swing.JPanel Main;
     private javax.swing.JButton PGFbtn;
     private javax.swing.JLabel RawPanel;
     private javax.swing.JButton Sales;
     private javax.swing.JButton Security;
     private javax.swing.JLabel Time;
+    private javax.swing.JLabel bg;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMin;
-    private javax.swing.JLabel defaultLayout;
+    private javax.swing.JLabel dash;
     private javax.swing.JPanel dragBarPanel;
     private javax.swing.JLabel roleIdentifier1;
     private javax.swing.JPanel sideNav;
