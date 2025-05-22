@@ -16,6 +16,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
+import java.util.Map;
+
 
 
 
@@ -64,11 +67,39 @@ public class Admin extends javax.swing.JFrame {
         PGFpanel.setVisible(false);
         SecPanel.setVisible(false);
         SalesPanel.setVisible(false);
+        loadProgramsToComboBox(); // this method loads combo data
+
         
         activeButton = Dashboard;
         Dashboard.setIcon(dashActive);
     }
-    
+            public void loadProgramsToComboBox() {
+            try {
+                Connection conn = db.connect();
+                String sql = "SELECT program_id, program_name, year_levels FROM programs";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery();
+
+                programComboBox.removeAllItems(); // clear old items
+
+                while (rs.next()) {
+                    int id = rs.getInt("program_id");
+                    String name = rs.getString("program_name");
+                    int years = rs.getInt("year_levels");
+
+                    // Add display name and keep ID stored
+                    programComboBox.addItem(name); // display only name
+
+                    // Optional: store year_levels for dynamic loading
+                    programYearMap.put(name, years); // 👈 you’ll need this map
+                }
+
+                conn.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Failed to load programs: " + e.getMessage());
+            }
+        }
+
         public void loadPrograms() {
         try {
             Connection conn = db.connect();
@@ -141,11 +172,11 @@ public class Admin extends javax.swing.JFrame {
         dragBarPanel = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
-        topDefault = new javax.swing.JPanel();
         LogOut = new javax.swing.JButton();
+        Main = new javax.swing.JPanel();
+        topDefault = new javax.swing.JPanel();
         Time = new javax.swing.JLabel();
         roleIdentifier = new javax.swing.JLabel();
-        Main = new javax.swing.JPanel();
         SalesPanel = new javax.swing.JPanel();
         salesPanel = new javax.swing.JLabel();
         SecPanel = new javax.swing.JPanel();
@@ -283,11 +314,6 @@ public class Admin extends javax.swing.JFrame {
         btnMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dragBarPanel.add(btnMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1178, 2, 40, 40));
 
-        getContentPane().add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
-
-        topDefault.setOpaque(false);
-        topDefault.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         LogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/logOut_btn.png"))); // NOI18N
         LogOut.setBorderPainted(false);
         LogOut.setContentAreaFilled(false);
@@ -302,7 +328,16 @@ public class Admin extends javax.swing.JFrame {
                 LogOutActionPerformed(evt);
             }
         });
-        topDefault.add(LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 26, -1, -1));
+        dragBarPanel.add(LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 30, 80, 30));
+
+        getContentPane().add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 60));
+
+        Main.setMaximumSize(new java.awt.Dimension(1280, 720));
+        Main.setOpaque(false);
+        Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        topDefault.setOpaque(false);
+        topDefault.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Time.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         Time.setForeground(new java.awt.Color(30, 53, 118));
@@ -314,11 +349,7 @@ public class Admin extends javax.swing.JFrame {
         roleIdentifier.setText("Admin");
         topDefault.add(roleIdentifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
 
-        getContentPane().add(topDefault, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
-
-        Main.setMaximumSize(new java.awt.Dimension(1280, 720));
-        Main.setOpaque(false);
-        Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Main.add(topDefault, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         SalesPanel.setOpaque(false);
         SalesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
