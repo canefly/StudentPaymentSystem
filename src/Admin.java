@@ -10,6 +10,13 @@ import javax.swing.JButton;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Timer;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 
 public class Admin extends javax.swing.JFrame {
@@ -49,7 +56,7 @@ public class Admin extends javax.swing.JFrame {
         new RoundedCornersMac(this); //rounded corners for mac
         setBackground(new java.awt.Color(0, 0, 0, 0));
         initClock();
-        
+        loadPrograms();
         // on startup menu
         DashPanel.setVisible(true);
         AccountPanel.setVisible(false);
@@ -61,6 +68,29 @@ public class Admin extends javax.swing.JFrame {
         Dashboard.setIcon(dashActive);
     }
     
+        public void loadPrograms() {
+        try {
+            Connection conn = db.connect();
+            String sql = "SELECT program_name, code, year_levels FROM programs";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) programListTable.getModel();
+            model.setRowCount(0); // clear table
+
+            while (rs.next()) {
+                String name = rs.getString("program_name");
+                String code = rs.getString("code");
+                int yearLevel = rs.getInt("year_levels");
+
+                model.addRow(new Object[]{name, code, yearLevel});
+            }
+
+            conn.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Failed to load programs: " + e.getMessage());
+        }
+    }
 
     
             private void initClock() {
@@ -74,8 +104,8 @@ public class Admin extends javax.swing.JFrame {
         
         // Set initial time immediately
         Time.setText(new SimpleDateFormat("hh:mm a").format(new Date()));
-    }
-    
+    }    
+
             
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -84,15 +114,40 @@ public class Admin extends javax.swing.JFrame {
         dragBarPanel = new javax.swing.JPanel();
         btnClose = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
-        Main = new javax.swing.JPanel();
         topDefault = new javax.swing.JPanel();
+        LogOut = new javax.swing.JButton();
         Time = new javax.swing.JLabel();
         roleIdentifier = new javax.swing.JLabel();
+        Main = new javax.swing.JPanel();
         SalesPanel = new javax.swing.JPanel();
         salesPanel = new javax.swing.JLabel();
         SecPanel = new javax.swing.JPanel();
         securityPanel = new javax.swing.JLabel();
         PGFpanel = new javax.swing.JPanel();
+        tabProgramFees = new javax.swing.JTabbedPane();
+        coursePanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        programListTable = new javax.swing.JTable();
+        programLists = new javax.swing.JLabel();
+        progName = new javax.swing.JLabel();
+        progName1 = new javax.swing.JLabel();
+        progName2 = new javax.swing.JLabel();
+        codeTextField = new javax.swing.JTextField();
+        progNameTextField = new javax.swing.JTextField();
+        yearLevels = new javax.swing.JComboBox<>();
+        addBtn = new javax.swing.JButton();
+        delBtn = new javax.swing.JButton();
+        Refresh = new javax.swing.JButton();
+        tuitionPanel = new javax.swing.JPanel();
+        progName3 = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        progName4 = new javax.swing.JLabel();
+        progName5 = new javax.swing.JLabel();
+        booksPanel = new javax.swing.JPanel();
+        uniformsPanel = new javax.swing.JPanel();
+        otherFeesPanel = new javax.swing.JPanel();
         pgfBG = new javax.swing.JLabel();
         DashPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -197,12 +252,24 @@ public class Admin extends javax.swing.JFrame {
 
         getContentPane().add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
 
-        Main.setMaximumSize(new java.awt.Dimension(1280, 720));
-        Main.setOpaque(false);
-        Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         topDefault.setOpaque(false);
         topDefault.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/logOut_btn.png"))); // NOI18N
+        LogOut.setBorderPainted(false);
+        LogOut.setContentAreaFilled(false);
+        LogOut.setFocusPainted(false);
+        LogOut.setOpaque(false);
+
+        LogOut.setIcon(new ImageIcon(getClass().getResource("/assets/icons/logOut_btn.png")));
+        LogOut.setRolloverIcon(new ImageIcon(getClass().getResource("/assets/icons/logOut_hover_btn.png")));
+        LogOut.setPressedIcon(new ImageIcon(getClass().getResource("/assets/icons/logOut_onclick_btn.png")));
+        LogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutActionPerformed(evt);
+            }
+        });
+        topDefault.add(LogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(1053, 26, -1, -1));
 
         Time.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         Time.setForeground(new java.awt.Color(30, 53, 118));
@@ -214,7 +281,11 @@ public class Admin extends javax.swing.JFrame {
         roleIdentifier.setText("Admin");
         topDefault.add(roleIdentifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
 
-        Main.add(topDefault, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        getContentPane().add(topDefault, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        Main.setMaximumSize(new java.awt.Dimension(1280, 720));
+        Main.setOpaque(false);
+        Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         SalesPanel.setOpaque(false);
         SalesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -234,6 +305,126 @@ public class Admin extends javax.swing.JFrame {
 
         PGFpanel.setOpaque(false);
         PGFpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        coursePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        programListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Program Name", "Code", "Year Levels"
+            }
+        ));
+        jScrollPane2.setViewportView(programListTable);
+
+        coursePanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 320));
+
+        programLists.setFont(new java.awt.Font("Helvetica", 1, 36)); // NOI18N
+        programLists.setText("Program lists");
+        coursePanel.add(programLists, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 240, 50));
+
+        progName.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        progName.setText("Year Levels:");
+        coursePanel.add(progName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 120, 20));
+
+        progName1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        progName1.setText("Program Name:");
+        coursePanel.add(progName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 120, 20));
+
+        progName2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        progName2.setText("Code:");
+        coursePanel.add(progName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 120, 20));
+        coursePanel.add(codeTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 447, 240, -1));
+        coursePanel.add(progNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 240, -1));
+
+        yearLevels.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        yearLevels.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearLevelsActionPerformed(evt);
+            }
+        });
+        coursePanel.add(yearLevels, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 485, 90, -1));
+
+        addBtn.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        addBtn.setText("Add");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+        coursePanel.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 80, -1));
+
+        delBtn.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        delBtn.setText("Delete");
+        delBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBtnActionPerformed(evt);
+            }
+        });
+        coursePanel.add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 80, -1));
+
+        Refresh.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        Refresh.setText("Refresh");
+        Refresh.setToolTipText("incase the tables didnt refresh automatically click me!");
+        Refresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshActionPerformed(evt);
+            }
+        });
+        coursePanel.add(Refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 80, -1));
+        Refresh.getAccessibleContext().setAccessibleDescription("");
+
+        tabProgramFees.addTab("Courses/Programs", coursePanel);
+
+        tuitionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        progName3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        progName3.setText("Amount: ");
+        tuitionPanel.add(progName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 70, 20));
+
+        label.setFont(new java.awt.Font("Helvetica", 1, 36)); // NOI18N
+        label.setText("Tuition lists");
+        tuitionPanel.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 240, 50));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable1);
+
+        tuitionPanel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 320));
+
+        progName4.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        progName4.setText("Program Name:");
+        tuitionPanel.add(progName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 120, 20));
+
+        progName5.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        progName5.setText("Year:");
+        tuitionPanel.add(progName5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 50, 20));
+
+        tabProgramFees.addTab("Tuition", tuitionPanel);
+
+        booksPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        tabProgramFees.addTab("Books", booksPanel);
+
+        uniformsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        tabProgramFees.addTab("Uniforms", uniformsPanel);
+
+        otherFeesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        tabProgramFees.addTab("Other Fee's", otherFeesPanel);
+
+        PGFpanel.add(tabProgramFees, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 900, 590));
 
         pgfBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/ProgFees.png"))); // NOI18N
         PGFpanel.add(pgfBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -510,6 +701,7 @@ public class Admin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void resetNavIcons() {
     if (activeButton != Dashboard) {
         Dashboard.setIcon(dashDefault);
@@ -571,6 +763,103 @@ public class Admin extends javax.swing.JFrame {
         switchPanel(SalesPanel, Sales, salesActive);
     }//GEN-LAST:event_SalesActionPerformed
 
+    private void LogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutActionPerformed
+    LogOut.addActionListener(e -> {
+        int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Do you really want to log out?",
+            "Confirm Logout",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            dispose(); // Close current window
+            new LoginPage().setVisible(true); // Reopen Login
+        }
+    });
+    }//GEN-LAST:event_LogOutActionPerformed
+
+    private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
+                int selectedRow = programListTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
+        // Get program name from selected row (assuming it's the first column)
+        String programName = programListTable.getValueAt(selectedRow, 0).toString();
+
+        int confirm = JOptionPane.showConfirmDialog(this, "Delete program \"" + programName + "\"?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                Connection conn = db.connect();
+                String sql = "DELETE FROM programs WHERE program_name = ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                stmt.setString(1, programName);
+                int affectedRows = stmt.executeUpdate();
+
+                if (affectedRows > 0) {
+                    JOptionPane.showMessageDialog(this, "Program deleted.");
+                    loadPrograms(); // refresh table
+                } else {
+                    JOptionPane.showMessageDialog(this, "Program not found or already deleted.");
+                }
+
+                conn.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Failed to delete program: " + e.getMessage());
+            }
+        }
+
+
+    }//GEN-LAST:event_delBtnActionPerformed
+
+    private void RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshActionPerformed
+        loadPrograms();
+    }//GEN-LAST:event_RefreshActionPerformed
+
+    private void yearLevelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearLevelsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yearLevelsActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        String name = progNameTextField.getText().trim();
+String code = codeTextField.getText().trim();
+String yearStr = yearLevels.getSelectedItem().toString();
+
+if (name.isEmpty() || code.isEmpty() || yearStr.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+    return;
+}
+
+try {
+    int yearLevel = Integer.parseInt(yearStr);
+    Connection conn = db.connect();
+    String sql = "INSERT INTO programs (program_name, code, year_levels) VALUES (?, ?, ?)";
+    PreparedStatement stmt = conn.prepareStatement(sql);
+    stmt.setString(1, name);
+    stmt.setString(2, code);
+    stmt.setInt(3, yearLevel);
+    stmt.executeUpdate();
+
+    JOptionPane.showMessageDialog(this, "Program added successfully!");
+
+    // Clear fields
+    progNameTextField.setText("");
+    codeTextField.setText("");
+    yearLevels.setSelectedIndex(0);
+
+    // Refresh table
+    loadPrograms();
+
+    conn.close();
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(this, "Failed to add program: " + e.getMessage());
+}
+
+    }//GEN-LAST:event_addBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -613,27 +902,52 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel DashPanel;
     private javax.swing.JButton Dashboard;
     private javax.swing.JPanel DefaultBg;
+    private javax.swing.JButton LogOut;
     private javax.swing.JPanel Main;
     private javax.swing.JButton PGFbtn;
     private javax.swing.JPanel PGFpanel;
     private javax.swing.JLabel RawPanel;
+    private javax.swing.JButton Refresh;
     private javax.swing.JButton Sales;
     private javax.swing.JPanel SalesPanel;
     private javax.swing.JPanel SecPanel;
     private javax.swing.JButton Security;
     private javax.swing.JLabel Time;
+    private javax.swing.JButton addBtn;
     private javax.swing.JLabel bg;
+    private javax.swing.JPanel booksPanel;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMin;
+    private javax.swing.JTextField codeTextField;
+    private javax.swing.JPanel coursePanel;
     private javax.swing.JLabel dash;
+    private javax.swing.JButton delBtn;
     private javax.swing.JPanel dragBarPanel;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel label;
+    private javax.swing.JPanel otherFeesPanel;
     private javax.swing.JLabel pgfBG;
+    private javax.swing.JLabel progName;
+    private javax.swing.JLabel progName1;
+    private javax.swing.JLabel progName2;
+    private javax.swing.JLabel progName3;
+    private javax.swing.JLabel progName4;
+    private javax.swing.JLabel progName5;
+    private javax.swing.JTextField progNameTextField;
+    private javax.swing.JTable programListTable;
+    private javax.swing.JLabel programLists;
     private javax.swing.JLabel roleIdentifier;
     private javax.swing.JLabel salesPanel;
     private javax.swing.JLabel securityPanel;
     private javax.swing.JPanel sideNav;
+    private javax.swing.JTabbedPane tabProgramFees;
     private javax.swing.JPanel topDefault;
+    private javax.swing.JPanel tuitionPanel;
+    private javax.swing.JPanel uniformsPanel;
+    private javax.swing.JComboBox<String> yearLevels;
     // End of variables declaration//GEN-END:variables
 }
