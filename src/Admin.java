@@ -57,6 +57,7 @@ public class Admin extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0, 0));
         initClock();
         loadPrograms();
+        loadTuitionData();
         // on startup menu
         DashPanel.setVisible(true);
         AccountPanel.setVisible(false);
@@ -92,7 +93,33 @@ public class Admin extends javax.swing.JFrame {
         }
     }
 
-    
+    public void loadTuitionData() {
+    try {
+        Connection conn = db.connect(); // your db.java connection
+        String sql = "SELECT p.program_name, t.year_level, t.amount " +
+                     "FROM tuition_matrix t " +
+                     "JOIN programs p ON t.program_id = p.program_id";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0); // clear table
+
+        while (rs.next()) {
+            String program = rs.getString("program_name");
+            int year = rs.getInt("year_level");
+            double amount = rs.getDouble("amount");
+
+            model.addRow(new Object[]{program, year, amount});
+        }
+
+        conn.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Failed to load tuition data: " + e.getMessage());
+    }
+}
+
+        
             private void initClock() {
         // Create a timer that updates every second (1000ms)
         Timer clockTimer = new Timer(1000, e -> {
@@ -139,12 +166,18 @@ public class Admin extends javax.swing.JFrame {
         delBtn = new javax.swing.JButton();
         Refresh = new javax.swing.JButton();
         tuitionPanel = new javax.swing.JPanel();
+        Refresh1 = new javax.swing.JButton();
+        delBtn1 = new javax.swing.JButton();
+        addBtn1 = new javax.swing.JButton();
         progName3 = new javax.swing.JLabel();
         label = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         progName4 = new javax.swing.JLabel();
         progName5 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        progNameTextField1 = new javax.swing.JTextField();
         booksPanel = new javax.swing.JPanel();
         uniformsPanel = new javax.swing.JPanel();
         otherFeesPanel = new javax.swing.JPanel();
@@ -338,8 +371,8 @@ public class Admin extends javax.swing.JFrame {
         progName2.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         progName2.setText("Code:");
         coursePanel.add(progName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 120, 20));
-        coursePanel.add(codeTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 447, 240, -1));
-        coursePanel.add(progNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 240, -1));
+        coursePanel.add(codeTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 447, 130, -1));
+        coursePanel.add(progNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 130, -1));
 
         yearLevels.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
         yearLevels.addActionListener(new java.awt.event.ActionListener() {
@@ -356,7 +389,7 @@ public class Admin extends javax.swing.JFrame {
                 addBtnActionPerformed(evt);
             }
         });
-        coursePanel.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 80, -1));
+        coursePanel.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 80, -1));
 
         delBtn.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
         delBtn.setText("Delete");
@@ -365,7 +398,7 @@ public class Admin extends javax.swing.JFrame {
                 delBtnActionPerformed(evt);
             }
         });
-        coursePanel.add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 80, -1));
+        coursePanel.add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 80, -1));
 
         Refresh.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
         Refresh.setText("Refresh");
@@ -375,16 +408,44 @@ public class Admin extends javax.swing.JFrame {
                 RefreshActionPerformed(evt);
             }
         });
-        coursePanel.add(Refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 80, -1));
+        coursePanel.add(Refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 80, -1));
         Refresh.getAccessibleContext().setAccessibleDescription("");
 
         tabProgramFees.addTab("Courses/Programs", coursePanel);
 
         tuitionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Refresh1.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        Refresh1.setText("Update");
+        Refresh1.setToolTipText("incase the tables didnt refresh automatically click me!");
+        Refresh1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Refresh1ActionPerformed(evt);
+            }
+        });
+        tuitionPanel.add(Refresh1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 410, 80, -1));
+
+        delBtn1.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        delBtn1.setText("Delete");
+        delBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBtn1ActionPerformed(evt);
+            }
+        });
+        tuitionPanel.add(delBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 80, -1));
+
+        addBtn1.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        addBtn1.setText("Add");
+        addBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtn1ActionPerformed(evt);
+            }
+        });
+        tuitionPanel.add(addBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 80, -1));
+
         progName3.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         progName3.setText("Amount: ");
-        tuitionPanel.add(progName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 70, 20));
+        tuitionPanel.add(progName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 70, 20));
 
         label.setFont(new java.awt.Font("Helvetica", 1, 36)); // NOI18N
         label.setText("Tuition lists");
@@ -392,13 +453,13 @@ public class Admin extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Program", "Year", "Amount"
             }
         ));
         jScrollPane3.setViewportView(jTable1);
@@ -411,7 +472,14 @@ public class Admin extends javax.swing.JFrame {
 
         progName5.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         progName5.setText("Year:");
-        tuitionPanel.add(progName5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 50, 20));
+        tuitionPanel.add(progName5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 50, 20));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tuitionPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 130, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tuitionPanel.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 130, -1));
+        tuitionPanel.add(progNameTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 130, -1));
 
         tabProgramFees.addTab("Tuition", tuitionPanel);
 
@@ -736,10 +804,14 @@ public class Admin extends javax.swing.JFrame {
         // Show selected
         panel.setVisible(true);
 
-        // Update nav icons
-        resetNavIcons();
-        button.setIcon(activeIcon);
+        // ✅ FIRST update the memory
         activeButton = button;
+
+        // 🔁 THEN reset the others
+        resetNavIcons();
+
+        // ✅ Finally, set the active icon
+        button.setIcon(activeIcon);
     }
 
     
@@ -860,6 +932,18 @@ try {
 
     }//GEN-LAST:event_addBtnActionPerformed
 
+    private void Refresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Refresh1ActionPerformed
+        loadTuitionData();
+    }//GEN-LAST:event_Refresh1ActionPerformed
+
+    private void delBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delBtn1ActionPerformed
+
+    private void addBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBtn1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -908,12 +992,14 @@ try {
     private javax.swing.JPanel PGFpanel;
     private javax.swing.JLabel RawPanel;
     private javax.swing.JButton Refresh;
+    private javax.swing.JButton Refresh1;
     private javax.swing.JButton Sales;
     private javax.swing.JPanel SalesPanel;
     private javax.swing.JPanel SecPanel;
     private javax.swing.JButton Security;
     private javax.swing.JLabel Time;
     private javax.swing.JButton addBtn;
+    private javax.swing.JButton addBtn1;
     private javax.swing.JLabel bg;
     private javax.swing.JPanel booksPanel;
     private javax.swing.JButton btnClose;
@@ -922,7 +1008,10 @@ try {
     private javax.swing.JPanel coursePanel;
     private javax.swing.JLabel dash;
     private javax.swing.JButton delBtn;
+    private javax.swing.JButton delBtn1;
     private javax.swing.JPanel dragBarPanel;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -938,6 +1027,7 @@ try {
     private javax.swing.JLabel progName4;
     private javax.swing.JLabel progName5;
     private javax.swing.JTextField progNameTextField;
+    private javax.swing.JTextField progNameTextField1;
     private javax.swing.JTable programListTable;
     private javax.swing.JLabel programLists;
     private javax.swing.JLabel roleIdentifier;
