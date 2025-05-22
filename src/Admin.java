@@ -28,15 +28,41 @@ public class Admin extends javax.swing.JFrame {
     private final ImageIcon accountsHover = new ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminAccounts_inactive_hover_btn.png"));
     private final ImageIcon accountsClick = new ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminAccounts_click_btn.png"));
     private final ImageIcon accountsActive = new ImageIcon(getClass().getResource("/assets/icons/Admin-active/AdminAccounts_active_btn.png"));
+    //Program and Fees
+    private final ImageIcon pgfDefault = new ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminPGF_inactive_btn.png"));
+    private final ImageIcon pgfHover = new ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminPGF_inactive_hover_btn.png"));
+    private final ImageIcon pgfClick = new ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminPGF_click_btn.png"));
+    private final ImageIcon pgfActive = new ImageIcon(getClass().getResource("/assets/icons/Admin-active/AdminPGF_active_btn.png"));
+    // Security
+    private final ImageIcon secDefault = new ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminSec_inactive_btn.png"));
+    private final ImageIcon secHover = new ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSec_inactive_hover_btn.png"));
+    private final ImageIcon secClick = new ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminSec_click_btn.png"));
+    private final ImageIcon secActive = new ImageIcon(getClass().getResource("/assets/icons/Admin-active/AdminSec_active_btn.png"));
+    // Sales and records
+    private final ImageIcon salesDefault = new ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminSales_inactive_btn.png"));
+    private final ImageIcon salesHover = new ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSales_inactive_hover_btn.png"));
+    private final ImageIcon salesClick = new ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminSales_click_btn.png"));
+    private final ImageIcon salesActive = new ImageIcon(getClass().getResource("/assets/icons/Admin-active/AdminSales_active_btn.png"));
 
-    
     public Admin() {
         initComponents();
         new RoundedCornersMac(this); //rounded corners for mac
         setBackground(new java.awt.Color(0, 0, 0, 0));
         initClock();
+        
+        // on startup menu
+        DashPanel.setVisible(true);
+        AccountPanel.setVisible(false);
+        PGFpanel.setVisible(false);
+        SecPanel.setVisible(false);
+        SalesPanel.setVisible(false);
+        
+        activeButton = Dashboard;
+        Dashboard.setIcon(dashActive);
     }
+    
 
+    
             private void initClock() {
         // Create a timer that updates every second (1000ms)
         Timer clockTimer = new Timer(1000, e -> {
@@ -50,6 +76,7 @@ public class Admin extends javax.swing.JFrame {
         Time.setText(new SimpleDateFormat("hh:mm a").format(new Date()));
     }
     
+            
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -58,14 +85,21 @@ public class Admin extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
         Main = new javax.swing.JPanel();
-        AccountPanel = new javax.swing.JPanel();
-        Time1 = new javax.swing.JLabel();
-        roleIdentifier2 = new javax.swing.JLabel();
-        AccountBG = new javax.swing.JLabel();
-        DashPanel = new javax.swing.JPanel();
+        topDefault = new javax.swing.JPanel();
         Time = new javax.swing.JLabel();
-        roleIdentifier1 = new javax.swing.JLabel();
+        roleIdentifier = new javax.swing.JLabel();
+        SalesPanel = new javax.swing.JPanel();
+        salesPanel = new javax.swing.JLabel();
+        SecPanel = new javax.swing.JPanel();
+        securityPanel = new javax.swing.JLabel();
+        PGFpanel = new javax.swing.JPanel();
+        pgfBG = new javax.swing.JLabel();
+        DashPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         dash = new javax.swing.JLabel();
+        AccountPanel = new javax.swing.JPanel();
+        AccountBG = new javax.swing.JLabel();
         sideNav = new javax.swing.JPanel();
         Sales = new javax.swing.JButton();
         Security = new javax.swing.JButton();
@@ -167,41 +201,69 @@ public class Admin extends javax.swing.JFrame {
         Main.setOpaque(false);
         Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        AccountPanel.setOpaque(false);
-        AccountPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Time1.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
-        Time1.setForeground(new java.awt.Color(30, 53, 118));
-        Time1.setText("00:00 PM");
-        AccountPanel.add(Time1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1179, 60, -1, 20));
-
-        roleIdentifier2.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        roleIdentifier2.setForeground(new java.awt.Color(30, 53, 118));
-        roleIdentifier2.setText("Admin");
-        AccountPanel.add(roleIdentifier2, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
-
-        AccountBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/Accounts.png"))); // NOI18N
-        AccountPanel.add(AccountBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        Main.add(AccountPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
-
-        DashPanel.setOpaque(false);
-        DashPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        topDefault.setOpaque(false);
+        topDefault.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Time.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         Time.setForeground(new java.awt.Color(30, 53, 118));
         Time.setText("00:00 PM");
-        DashPanel.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(1179, 60, -1, 20));
+        topDefault.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(1179, 60, -1, 20));
 
-        roleIdentifier1.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        roleIdentifier1.setForeground(new java.awt.Color(30, 53, 118));
-        roleIdentifier1.setText("Admin");
-        DashPanel.add(roleIdentifier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
+        roleIdentifier.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        roleIdentifier.setForeground(new java.awt.Color(30, 53, 118));
+        roleIdentifier.setText("Admin");
+        topDefault.add(roleIdentifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
+
+        Main.add(topDefault, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        SalesPanel.setOpaque(false);
+        SalesPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        salesPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/SalesRec.png"))); // NOI18N
+        SalesPanel.add(salesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Main.add(SalesPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        SecPanel.setOpaque(false);
+        SecPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        securityPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/Sec.png"))); // NOI18N
+        SecPanel.add(securityPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Main.add(SecPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        PGFpanel.setOpaque(false);
+        PGFpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pgfBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/ProgFees.png"))); // NOI18N
+        PGFpanel.add(pgfBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Main.add(PGFpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        DashPanel.setOpaque(false);
+        DashPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        DashPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 790, 570));
 
         dash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/Dashboard.png"))); // NOI18N
         DashPanel.add(dash, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Main.add(DashPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        AccountPanel.setOpaque(false);
+        AccountPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        AccountBG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/Accounts.png"))); // NOI18N
+        AccountPanel.add(AccountBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Main.add(AccountPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         sideNav.setMaximumSize(new java.awt.Dimension(1280, 720));
         sideNav.setOpaque(false);
@@ -228,16 +290,30 @@ public class Admin extends javax.swing.JFrame {
         Sales.setOpaque(false);
         Sales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Sales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSales_inactive_hover_btn.png")));
+                if (activeButton != Sales) {
+                    Sales.setIcon(salesHover);
+                }
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Sales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminSales_inactive_btn.png")));
+                if (activeButton != Sales) {
+                    Sales.setIcon(salesDefault);
+                }
             }
+
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                Sales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminSales_click_btn.png")));
+                Sales.setIcon(salesClick);
             }
+
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                Sales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSales_inactive_hover_btn.png")));
+                if (activeButton != Sales) {
+                    Sales.setIcon(salesHover);
+                }
+            }
+        });
+        Sales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalesActionPerformed(evt);
             }
         });
         sideNav.add(Sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 426, 280, 50));
@@ -262,16 +338,30 @@ public class Admin extends javax.swing.JFrame {
         Security.setOpaque(false);
         Security.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSec_inactive_hover_btn.png")));
+                if (activeButton != Security) {
+                    Security.setIcon(secHover);
+                }
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminSec_inactive_btn.png")));
+                if (activeButton != Security) {
+                    Security.setIcon(secDefault);
+                }
             }
+
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminSec_click_btn.png")));
+                Security.setIcon(secClick);
             }
+
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                Security.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminSec_inactive_hover_btn.png")));
+                if (activeButton != Security) {
+                    Security.setIcon(secHover);
+                }
+            }
+        });
+        Security.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SecurityActionPerformed(evt);
             }
         });
         sideNav.add(Security, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 366, 280, 50));
@@ -296,16 +386,30 @@ public class Admin extends javax.swing.JFrame {
         PGFbtn.setOpaque(false);
         PGFbtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminPGF_inactive_hover_btn.png")));
+                if (activeButton != PGFbtn) {
+                    PGFbtn.setIcon(pgfHover);
+                }
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminPGF_inactive_btn.png")));
+                if (activeButton != PGFbtn) {
+                    PGFbtn.setIcon(pgfDefault);
+                }
             }
+
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminPGF_click_btn.png")));
+                PGFbtn.setIcon(pgfClick);
             }
+
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                PGFbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminPGF_inactive_hover_btn.png")));
+                if (activeButton != PGFbtn) {
+                    PGFbtn.setIcon(pgfHover);
+                }
+            }
+        });
+        PGFbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PGFbtnActionPerformed(evt);
             }
         });
         sideNav.add(PGFbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 307, 280, 50));
@@ -414,12 +518,27 @@ public class Admin extends javax.swing.JFrame {
     if (activeButton != Accounts) {
         Accounts.setIcon(accountsDefault);
     }
-
+    
+    if (activeButton != PGFbtn) {
+    PGFbtn.setIcon(pgfDefault);
+    }
+    
+    if (activeButton != Security) {
+    Security.setIcon(secDefault);
+    }
+    
+    if (activeButton != Sales) {
+    Sales.setIcon(salesDefault);
+    } 
 }
 
     private void switchPanel(javax.swing.JPanel panel, javax.swing.JButton button, ImageIcon activeIcon) {
         // Hide all panels
         DashPanel.setVisible(false);
+        AccountPanel.setVisible(false);
+        PGFpanel.setVisible(false);
+        SecPanel.setVisible(false);
+        SalesPanel.setVisible(false);
         // Add more here later like: SalesPanel.setVisible(false);
 
         // Show selected
@@ -439,6 +558,18 @@ public class Admin extends javax.swing.JFrame {
     private void AccountsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountsActionPerformed
         switchPanel(AccountPanel, Accounts, accountsActive);
     }//GEN-LAST:event_AccountsActionPerformed
+
+    private void PGFbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGFbtnActionPerformed
+         switchPanel(PGFpanel, PGFbtn, pgfActive);
+    }//GEN-LAST:event_PGFbtnActionPerformed
+
+    private void SecurityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SecurityActionPerformed
+        switchPanel(SecPanel, Security, secActive);
+    }//GEN-LAST:event_SecurityActionPerformed
+
+    private void SalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalesActionPerformed
+        switchPanel(SalesPanel, Sales, salesActive);
+    }//GEN-LAST:event_SalesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -484,18 +615,25 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel DefaultBg;
     private javax.swing.JPanel Main;
     private javax.swing.JButton PGFbtn;
+    private javax.swing.JPanel PGFpanel;
     private javax.swing.JLabel RawPanel;
     private javax.swing.JButton Sales;
+    private javax.swing.JPanel SalesPanel;
+    private javax.swing.JPanel SecPanel;
     private javax.swing.JButton Security;
     private javax.swing.JLabel Time;
-    private javax.swing.JLabel Time1;
     private javax.swing.JLabel bg;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMin;
     private javax.swing.JLabel dash;
     private javax.swing.JPanel dragBarPanel;
-    private javax.swing.JLabel roleIdentifier1;
-    private javax.swing.JLabel roleIdentifier2;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel pgfBG;
+    private javax.swing.JLabel roleIdentifier;
+    private javax.swing.JLabel salesPanel;
+    private javax.swing.JLabel securityPanel;
     private javax.swing.JPanel sideNav;
+    private javax.swing.JPanel topDefault;
     // End of variables declaration//GEN-END:variables
 }
