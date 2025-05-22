@@ -3,22 +3,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
- *
- * @author canef
- */
+
 import java.awt.*;
+
+
 public class Admin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Admin
-     */
+    
+    
+    
     public Admin() {
         initComponents();
         new RoundedCornersMac(this); //rounded corners for mac
         setBackground(new java.awt.Color(0, 0, 0, 0));
     }
 
+    private JButton activeButton;
+
+    private final ImageIcon dashDefault = new ImageIcon(getClass().getResource("/assets/icons/Admin-inactive/AdminDashboard_inactive_btn.png"));
+    private final ImageIcon dashHover = new ImageIcon(getClass().getResource("/assets/icons/admin-inactive-hover/AdminDashboard_inactive_hover_btn.png"));
+    private final ImageIcon dashClick = new ImageIcon(getClass().getResource("/assets/icons/Admin-click/AdminDashboard_click_btn.png"));
+    private final ImageIcon dashActive = new ImageIcon(getClass().getResource("/assets/icons/Admin-active/AdminDashboard_active_btn.png"));
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,11 +36,12 @@ public class Admin extends javax.swing.JFrame {
     private void initComponents() {
 
         Main = new javax.swing.JPanel();
+        DashPanel = new javax.swing.JPanel();
         DefaultBg = new javax.swing.JPanel();
-        roleIdentifier = new javax.swing.JLabel();
+        Time = new javax.swing.JLabel();
+        roleIdentifier1 = new javax.swing.JLabel();
         defaultLayout = new javax.swing.JLabel();
         Guide = new javax.swing.JLabel();
-        DashPanel = new javax.swing.JPanel();
         sideNav = new javax.swing.JPanel();
         Sales = new javax.swing.JButton();
         Security = new javax.swing.JButton();
@@ -54,13 +62,22 @@ public class Admin extends javax.swing.JFrame {
         Main.setOpaque(false);
         Main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        DashPanel.setOpaque(false);
+        DashPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Main.add(DashPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
         DefaultBg.setOpaque(false);
         DefaultBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        roleIdentifier.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
-        roleIdentifier.setForeground(new java.awt.Color(30, 53, 118));
-        roleIdentifier.setText("Admin");
-        DefaultBg.add(roleIdentifier, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
+        Time.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
+        Time.setForeground(new java.awt.Color(30, 53, 118));
+        Time.setText("00:00 PM");
+        DefaultBg.add(Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(1179, 60, -1, 20));
+
+        roleIdentifier1.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        roleIdentifier1.setForeground(new java.awt.Color(30, 53, 118));
+        roleIdentifier1.setText("Admin");
+        DefaultBg.add(roleIdentifier1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 36, -1, 20));
 
         defaultLayout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Contents.png"))); // NOI18N
         DefaultBg.add(defaultLayout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -71,10 +88,6 @@ public class Admin extends javax.swing.JFrame {
         DefaultBg.add(Guide, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Main.add(DefaultBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
-
-        DashPanel.setOpaque(false);
-        DashPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Main.add(DashPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         sideNav.setMaximumSize(new java.awt.Dimension(1280, 720));
         sideNav.setOpaque(false);
@@ -245,6 +258,10 @@ public class Admin extends javax.swing.JFrame {
         RawPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Admin Windows/Admin_SideNav.png"))); // NOI18N
         sideNav.add(RawPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        Main.add(sideNav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        getContentPane().add(Main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
         dragBarPanel.setOpaque(false);
         dragBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         final Point[] mousePoint = {null};
@@ -325,11 +342,7 @@ public class Admin extends javax.swing.JFrame {
         btnMin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dragBarPanel.add(btnMin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1178, 2, 40, 40));
 
-        sideNav.add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
-
-        Main.add(sideNav, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        getContentPane().add(Main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        getContentPane().add(dragBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 50));
 
         pack();
         setLocationRelativeTo(null);
@@ -389,11 +402,12 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel RawPanel;
     private javax.swing.JButton Sales;
     private javax.swing.JButton Security;
+    private javax.swing.JLabel Time;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnMin;
     private javax.swing.JLabel defaultLayout;
     private javax.swing.JPanel dragBarPanel;
-    private javax.swing.JLabel roleIdentifier;
+    private javax.swing.JLabel roleIdentifier1;
     private javax.swing.JPanel sideNav;
     // End of variables declaration//GEN-END:variables
 }
